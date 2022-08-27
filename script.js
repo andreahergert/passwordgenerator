@@ -17,7 +17,7 @@ function getRandomItem(list) {
 // Created function for generating a password
 function generatePassword() {
 
-  var userInput = window.prompt("How long do you want you password to be?")
+  var userInput = window.prompt("How long do you want you password to be? This can be from 8-128 characters long.")
 
   var passwordLength = parseInt(userInput)
 
@@ -59,15 +59,20 @@ function generatePassword() {
     optionsList.push(uppercaseList)
   }
 
+  if (optionsList.length === 0){
+    optionsList.push(symbolList)
+  }
+
   var generatedPassword = ""
 
   // generating random list from array of letters, numbers, and symbols with the getRandomItem options function 
   for (var i=0; i <passwordLength; i++){
     var randomList = getRandomItem(optionsList)
     var randomChar = getRandomItem(randomList)
-    console.log(randomChar)
+    generatedPassword += randomChar
   }
 
+  return generatedPassword
 }
 
 // Writes password to the #password input
